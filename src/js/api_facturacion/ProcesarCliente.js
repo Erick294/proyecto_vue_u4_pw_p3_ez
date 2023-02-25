@@ -18,6 +18,10 @@ export const buscarTodosFachada = async () => {
     return await buscarTodos()
 }
 
+export const buscarIdFachada = async (id) => {
+    return await buscarId()
+}
+
 export const borrarIdFachada = async (id) => {
     await borrarId(id);
 }
@@ -45,6 +49,12 @@ const buscarTodos = () => {
     const data = axios.get(`http://localhost:8081/API/Facturacion/V1/clientes`).then(r=>r.data)
     return data
 }
+
+const buscarId = () => {
+    const data = axios.get(`http://localhost:8081/API/Facturacion/V1/clientes/${id}`).then(r=>r.data)
+    return data
+}
+
 
 const borrarId = (id) => {
     axios.delete(`http://localhost:8081/API/Facturacion/V1/clientes/${id}`).then(r=>r.data)

@@ -48,6 +48,15 @@ export default {
             }
             await insertarFachada(miCliente)
         }
+    },
+    mounted(){
+        console.log("Entro a la págna insertar")
+        console.log(this.$route)
+        console.log(this.$route.query.ciudad)
+        console.log(this.$route.query.edad)
+        console.log("Nuevas Impresiones")
+        const{ciudad, edad} = this.$route.query
+        console.log(ciudad)
     }
 
 }

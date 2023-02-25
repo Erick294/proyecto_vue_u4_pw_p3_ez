@@ -1,6 +1,6 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 
-/* Carga pesada eager*/
+/* Carga pesada eager
 import Inicio from '../pages/Inicio.vue'
 import BuscarPorCedula from '../pages/BuscarPorCedula.vue'
 import ActualizarCliente from '../pages/ActualizarCliente.vue'
@@ -32,10 +32,35 @@ const routes = [
     {path:'/eliminar',
      name:'eliminar',
      component: EliminarCliente}
-]
+]*/
 
 /*Carga perezosa (Lazy)*/
-
+const routes = [
+    {path:'/',
+     name: 'inicio',
+     component: () => import('../pages/Inicio.vue')
+    },
+    {path:'/buscar/:idCliente',
+     name: 'buscar',
+     component: () => import('../pages/BuscarClienteId.vue')
+    },
+    {path:'/buscar/cedula',
+     name: 'buscarCedula',
+     component: () => import('../pages/BuscarPorCedula.vue')
+    },
+    {path:'/insertar',
+     name: 'insertar',
+     component: () => import('../pages/InsertarCliente.vue')
+    },
+    {path:'/actualizar',
+     name: 'actualizar',
+     component: () => import('../pages/ActualizarCliente.vue')
+    },
+    {path:'/eliminar',
+     name: 'eliminar',
+     component: () => import('../pages/EliminarCliente.vue')
+    }
+]
 
 const router = createRouter({
     history: createWebHashHistory(),

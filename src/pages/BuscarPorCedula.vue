@@ -2,10 +2,11 @@
   <h1>Buscar por cedula</h1>
   <input type="text" v-model="cedula">
   <button v-on:click="consultarCliente()">Buscar</button>
-  <button v-on:click="insertarCliente()">Insertar</button>
-  <button v-on:click="actualizarCliente()">Actualizar</button>
-  <button v-on:click="eliminarCliente()">Eliminar</button>
 
+  <h3>Cedula: {{ cedula }}</h3>
+  <h3>Nombre: {{ nombre }}</h3>
+  <h3>Apellido: {{ apellido }}</h3>
+  <h3>Genero: {{ genero }}</h3>
 </template>
 
 <script>
@@ -14,39 +15,25 @@ import {obtenerPorCedulaFachada, insertarFachada, actualizarFachada, borrarIdFac
 export default {
     data(){
         return{
-            cedula: null
+            cedula: null,
+            nombre: null,
+            apellido: null,
+            genero: null
         }
     },
     methods:{
         async consultarCliente(){
-            const data = await obtenerPorCedulaFachada(this.cedula)
+            const {cedula, nombre, apellido, genero} = await obtenerPorCedulaFachada(this.cedula)
             console.log(data)
+            this.cedula = cedula
+            this.nombre = nombre
+            this.apellido = apellido
+            this.genero = genero
         },
-        async insertarCliente(){
-            const miCliente = {
-                nombre: "Fabricio",
-                apellido: "Chacon",
-                fechaNacimiento: "1997-09-20T00:00:00",
-                cedula: "1234567",
-                genero: "Masculino",
-                email:"jhksddfkjs@gmail.com"
-            }
-            await insertarFachada(miCliente)
-        }, 
-        async actualizarCliente(){
-            const miCliente = {
-                nombre: "Manuel",
-                apellido: "Galarza",
-                fechaNacimiento: "1997-09-20T00:00:00",
-                cedula: "12345678",
-                genero: "Masculino",
-                email:"jhksddfkjs@gmail.com"
-            }
-            await actualizarFachada(2, miCliente)
-        },
-        async eliminarCliente(){
-            await borrarIdFachada(2)
-        }
+    },
+    mounted(){
+        console.log(this.$route)
+        const {idCliente} = this.$route.params
     }
 }
 </script>
