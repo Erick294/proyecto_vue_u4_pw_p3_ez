@@ -1,14 +1,13 @@
 <template>
-  <BuscarPorCedula/>
+  <router-view></router-view>
 </template>
 
 <script>
-import BuscarPorCedula from './pages/BuscarPorCedula.vue';
 
 export default {
   name: 'App',
   components: {
-    BuscarPorCedula
+
   }
 }
 </script>
