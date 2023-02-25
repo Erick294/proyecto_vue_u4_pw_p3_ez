@@ -2,8 +2,11 @@
     <h1>Buscar por ID</h1>
     <h2>{{ id }}</h2>
     <h2>{{ id2 }}</h2>
-    <input type="text" v-model="id">
-    <button v-on:click="consultarCliente()">Buscar</button>
+    
+    <div class="form-floating">
+        <input type="text" v-model="id">
+        <button v-on:click="consultarCliente()">Buscar</button>
+    </div>
   
     <h3>Cedula: {{ cedula }}</h3>
     <h3>Nombre: {{ nombre }}</h3>
